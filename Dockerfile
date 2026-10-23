@@ -1,11 +1,7 @@
-FROM nginx:1.28.1-alpine3.23
+FROM docker.io/nginx:1.31-alpine3.24
 
 ARG VERSION=0.0.0
 ENV VERSION=${VERSION}
-
-# CGit
-ARG CGIT_VERSION=1.2.3-r5
-ENV CGIT_VERSION=${CGIT_VERSION}
 
 # CGit default options
 ENV CGIT_TITLE="CGit"
@@ -21,7 +17,7 @@ LABEL version="${VERSION}" \
 RUN set -eux \
     && apk add --no-cache \
         ca-certificates \
-        cgit=${CGIT_VERSION} \
+        cgit \
         fcgiwrap \
         git \
         lua5.3-libs \
